@@ -23,7 +23,7 @@
 {% set release = apt_sources_debian.release|default(ansible_distribution_release) %}
 {% set components = apt_sources_debian.components|default(apt_sources_debian_components)|join(' ') %}
 {% set gen_sources = apt_sources_debian.enable_sources|default(apt_sources_debian_enable_sources) %}
-{% set additional_source_strings = apt_sources_debian.additional_source_strings|default(apt_sources_debian_additional_source_strings) %}
+{% set additional_source_strings = apt_sources_debian.additional_source_strings|default(apt_sources_debian_additional_source_strings)|default(apt_sources_additional_source_strings) %}
 {%- if gen_sources %}
 	{%- set fmtstr='%-7s %s%s %s%s %s' %}
 {%- else %}
@@ -49,7 +49,7 @@
 {% set release = apt_sources_ubuntu.release|default(ansible_distribution_release) %}
 {% set components = apt_sources_ubuntu.components|default(apt_sources_ubuntu_components)|join(' ') %}
 {% set gen_sources = apt_sources_ubuntu.enable_sources|default(apt_sources_ubuntu_enable_sources) %}
-{% set additional_source_strings = apt_sources_ubuntu.additional_source_strings|default(apt_sources_ubuntu_additional_source_strings) %}
+{% set additional_source_strings = apt_sources_ubuntu.additional_source_strings|default(apt_sources_ubuntu_additional_source_strings)|default(apt_sources_additional_source_strings) %}
 {%- if gen_sources %}
 	{%- set fmtstr='%-7s %s%s %s%s %s' %}
 {%- else %}

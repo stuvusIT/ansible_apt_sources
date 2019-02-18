@@ -10,11 +10,11 @@ A running debian based system.
 
 ## Role Variables
 
-| Name                                    | Type                                 | Description                                                                                                                                                                       |
-|-----------------------------------------|--------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `apt_sources_ubuntu`                    | [dict](#apt_sources_ubuntu) | Apt source config for ubuntu systems                                                                                                                                              |
-| `apt_sources_debian`                    | [dict](#apt_sources_debian) | Apt source config for debian systems                                                                                                                                              |
-| `apt_sources_additional_source_strings` | list of strings                      | Additional apt sources to add (each string is additional line in `/etc/apt/sources.list` without any modifications)(This option will be overwritten by the release specific ones) |
+| Name                                    | Type                        |        Default/Required [¹](#__required)        | Description                                                                                                                                                                       |
+|-----------------------------------------|-----------------------------|:-----------------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `apt_sources_ubuntu`                    | [dict](#apt_sources_ubuntu) | _see [apt_sources_ubuntu](#apt_sources_ubuntu)_ | Apt source config for ubuntu systems                                                                                                                                              |
+| `apt_sources_debian`                    | [dict](#apt_sources_debian) | _see [apt_sources_debian](#apt_sources_debian)_ | Apt source config for debian systems                                                                                                                                              |
+| `apt_sources_additional_source_strings` | list of strings             |                       `[]`                      | Additional apt sources to add (each string is additional line in `/etc/apt/sources.list` without any modifications)(This option will be overwritten by the release specific ones) |
 
 
 ### apt_sources_ubuntu
@@ -30,9 +30,7 @@ A running debian based system.
 | `proposed`                  | boolean         |                `False`               | Enable proposed repository                                                                                          |
 | `canonical`                 | boolean         |                `False`               | Enable ubuntu partner (canonical) repository                                                                        |
 | `canonical_mirror`          | string          |    `http://archive.canonical.com/`   | Ubuntu canonical mirror to use                                                                                      |
-| `additional_source_strings` | list of strings |                 `[]`                 | Additional apt sources to add (each string is additional line in `/etc/apt/sources.list` without any modifications) |
-
-<a id="__required">¹</a> Variable is not required unless no default is given or other specified
+| `additional_source_strings` | list of strings |                                      | Additional apt sources to add (each string is additional line in `/etc/apt/sources.list` without any modifications) |
 
 
 ### apt_sources_debian
@@ -45,7 +43,9 @@ A running debian based system.
 | `security_repo`             | boolean         |                `True`                | Enable security repository                                                                                          |
 | `update_repo`               | boolean         |                `True`                | Enable general update repository                                                                                    |
 | `backports`                 | boolean         |                `False`               | Enable backports repository                                                                                         |
-| `additional_source_strings` | list of strings |                 `[]`                 | Additional apt sources to add (each string is additional line in `/etc/apt/sources.list` without any modifications) |
+| `additional_source_strings` | list of strings |                                      | Additional apt sources to add (each string is additional line in `/etc/apt/sources.list` without any modifications) |
+
+<a id="__required">¹</a> Variable is not required unless no default is given or other specified
 
 
 ### Defaults
