@@ -48,6 +48,11 @@ A running debian based system.
 | `additional_source_strings` | list of strings |                 `[]`                 | Additional apt sources to add (each string is additional line in `/etc/apt/sources.list` without any modifications) |
 
 
+### Defaults
+
+All defaults can be adapted by setting the respective variable, prepended by `apt_sources_ubuntu_`, or `apt_sources_debian_`. See also [defaults/main.yml](defaults/main.yml).
+
+
 ## Example Configuration
 
 ```yml
