@@ -1,27 +1,26 @@
 # fstab
 
-This Role generates a proper apt sources.
-
+This role generates a proper `/etc/apt/sources.list` file.
 
 ## Requirements
 
-A running debian based system.
+A running Debian-based system.
 
 
 ## Role Variables
 
-| Name                                    | Type                        |        Default/Required [¹](#__required)        | Description                                                                                                                                                                       |
-|-----------------------------------------|-----------------------------|:-----------------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `apt_sources_ubuntu`                    | [dict](#apt_sources_ubuntu) | _see [apt_sources_ubuntu](#apt_sources_ubuntu)_ | Apt source config for ubuntu systems                                                                                                                                              |
-| `apt_sources_debian`                    | [dict](#apt_sources_debian) | _see [apt_sources_debian](#apt_sources_debian)_ | Apt source config for debian systems                                                                                                                                              |
-| `apt_sources_additional_source_strings` | list of strings             |                       `[]`                      | Additional apt sources to add (each string is additional line in `/etc/apt/sources.list` without any modifications)(This option will be overwritten by the release specific ones) |
+| Name                                    | Type                        | Default/Required [¹](#__required)               | Description                                                                                                                                                                          |
+|-----------------------------------------|-----------------------------|:-----------------------------------------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `apt_sources_ubuntu`                    | [dict](#apt_sources_ubuntu) | _see [apt_sources_ubuntu](#apt_sources_ubuntu)_ | Apt source config for Ubuntu systems                                                                                                                                                 |
+| `apt_sources_debian`                    | [dict](#apt_sources_debian) | _see [apt_sources_debian](#apt_sources_debian)_ | Apt source config for Debian systems                                                                                                                                                 |
+| `apt_sources_additional_source_strings` | list of strings             | `[]`                                            | Additional apt sources to add (each string is an additional line in `/etc/apt/sources.list` without any modifications)(This option will be overwritten by the release specific ones) |
 
 
 ### apt_sources_ubuntu
 | Option Key                  | Type            |  Default/Required [¹](#__required)   | Description                                                                                                         |
 |-----------------------------|-----------------|:------------------------------------:|---------------------------------------------------------------------------------------------------------------------|
 | `release`                   | string          | `{{ ansible_distribution_release }}` | Release string to set                                                                                               |
-| `mirror`                    | string          |    `http://de.archive.ubuntu.com/`   | Mirror to use for apt entries (The leading `/` is required)                                                         |
+| `mirror`                    | string          |    `http://de.archive.ubuntu.com/`   | Mirror to use for apt entries (The trailing `/` is required)                                                         |
 | `enable_sources`            | boolean         |                `False`               | Enable `deb-src` entries                                                                                            |
 | `components`                | list of strings |        `['main', 'universe']`        | Components to enable (valid values are: `main`, `restricted`, `universe`, `multiverse`)                             |
 | `security_repo`             | boolean         |                `True`                | Enable security repository                                                                                          |
@@ -34,16 +33,16 @@ A running debian based system.
 
 
 ### apt_sources_debian
-| Option Key                  | Type            |  Default/Required [¹](#__required)   | Description                                                                                                         |
-|-----------------------------|-----------------|:------------------------------------:|---------------------------------------------------------------------------------------------------------------------|
-| `release`                   | string          | `{{ ansible_distribution_release }}` | Release string to set                                                                                               |
-| `mirror`                    | string          |      `http://ftp.de.debian.org/`     | Mirror to use for apt entries (The leading `/` is required)                                                         |
-| `enable_sources`            | boolean         |                `False`               | Enable `deb-src` entries                                                                                            |
-| `components`                | list of strings |         `['main', 'contrib']`        | Components to enable (valid values are: `main`, `contrib`, `non-free`)                                              |
-| `security_repo`             | boolean         |                `True`                | Enable security repository                                                                                          |
-| `update_repo`               | boolean         |                `True`                | Enable general update repository                                                                                    |
-| `backports`                 | boolean         |                `False`               | Enable backports repository                                                                                         |
-| `additional_source_strings` | list of strings |                                      | Additional apt sources to add (each string is additional line in `/etc/apt/sources.list` without any modifications) |
+| Option Key                  | Type            | Default/Required [¹](#__required)    | Description                                                                                                            |
+|-----------------------------|-----------------|:------------------------------------:|------------------------------------------------------------------------------------------------------------------------|
+| `release`                   | string          | `{{ ansible_distribution_release }}` | Release string to set                                                                                                  |
+| `mirror`                    | string          | `http://ftp.de.debian.org/`          | Mirror to use for apt entries (The trailing `/` is required)                                                           |
+| `enable_sources`            | boolean         | `False`                              | Enable `deb-src` entries                                                                                               |
+| `components`                | list of strings | `['main', 'contrib']`                | Components to enable (valid values are: `main`, `contrib`, `non-free`)                                                 |
+| `security_repo`             | boolean         | `True`                               | Enable security repository                                                                                             |
+| `update_repo`               | boolean         | `True`                               | Enable general update repository                                                                                       |
+| `backports`                 | boolean         | `False`                              | Enable backports repository                                                                                            |
+| `additional_source_strings` | list of strings |                                      | Additional apt sources to add (each string is an additional line in `/etc/apt/sources.list` without any modifications) |
 
 <a id="__required">¹</a> Variable is not required unless no default is given or other specified
 
