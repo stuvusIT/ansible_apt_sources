@@ -1,0 +1,10 @@
+---
+- name: Install apt sources.list
+  template:
+    dest: /etc/apt/sources.list
+    group: root
+    owner: root
+    mode: 0644
+    src: sources.lists.j2
+  tags:
+    - apt_sources
