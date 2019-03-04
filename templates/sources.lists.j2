@@ -2,7 +2,8 @@
 {%- macro write_entry(suite, release_path) %}
 {{- fmtstr|format('deb', mirror, suite, release, release_path, components) }}
 {%- if gen_sources %}
-	{{- fmtstr|format('deb-src', mirror, suite, release, release_path, components) }}
+
+{{ fmtstr|format('deb-src', mirror, suite, release, release_path, components) }}
 {%- endif %}
 {%- endmacro %}
 
