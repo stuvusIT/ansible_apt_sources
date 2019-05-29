@@ -1,6 +1,6 @@
 # fstab
 
-This role generates a proper `/etc/apt/sources.list` file.
+This role generates a proper `/etc/apt/sources.list` file and updates the repository cache if necessary.
 
 ## Requirements
 
