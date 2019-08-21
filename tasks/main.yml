@@ -5,7 +5,7 @@
     group: root
     owner: root
     mode: 0644
-    src: sources.lists.j2
+    src: sources.list.j2
   notify: Update repositories cache
   tags:
     - apt_sources
