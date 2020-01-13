@@ -18,6 +18,7 @@
 {%- endmacro %}
 
 
+{%- if not apt_sources_only_additional %}
 {%- if ansible_distribution == 'Debian' %}
 
 {% set mirror = apt_sources_debian.mirror|default(apt_sources_debian_mirror) %}
@@ -74,3 +75,4 @@
 {{ write_additional_entries() }}
 
 {%- endif %}{# if ansible_distribution == 'ubuntu' #}
+{%- endif %}{# if not apt_sources_only_additional #}

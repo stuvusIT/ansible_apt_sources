@@ -22,3 +22,4 @@ apt_sources_debian_components:
 apt_sources_debian_security_repo: True
 apt_sources_debian_update_repo: True
 apt_sources_debian_backports: False
+apt_sources_only_additional: False

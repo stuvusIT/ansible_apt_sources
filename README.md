@@ -9,12 +9,13 @@ A running Debian-based system.
 
 ## Role Variables
 
-| Name                                    | Type                        | Default/Required [¹](#__required)               | Description                                                                                                                                                                          |
+| Name                                    | Type                        |        Default/Required [¹](#__required)        | Description                                                                                                                                                                          |
 |-----------------------------------------|-----------------------------|:-----------------------------------------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `apt_sources_ubuntu`                    | [dict](#apt_sources_ubuntu) | _see [apt_sources_ubuntu](#apt_sources_ubuntu)_ | Apt source config for Ubuntu systems                                                                                                                                                 |
 | `apt_sources_debian`                    | [dict](#apt_sources_debian) | _see [apt_sources_debian](#apt_sources_debian)_ | Apt source config for Debian systems                                                                                                                                                 |
-| `apt_sources_additional_source_strings` | list of strings             | `[]`                                            | Additional apt sources to add (each string is an additional line in `/etc/apt/sources.list` without any modifications)(This option will be overwritten by the release specific ones) |
+| `apt_sources_additional_source_strings` | list of strings             |                       `[]`                      | Additional apt sources to add (each string is an additional line in `/etc/apt/sources.list` without any modifications)(This option will be overwritten by the release specific ones) |
 | `apt_sources_default_release`           | string with release name    |                                                 | Add default release to preferences to allow installing packages from another release version.                                                                                        |
+| `apt_sources_only_additional`           | boolean                     |                     `False`                     | Only write additional apt sources                                                                                                                                                    |
 
 
 ### apt_sources_ubuntu
