@@ -43,9 +43,8 @@
 {% if apt_sources_debian.backports|default(apt_sources_debian_backports) %}
 	{{- write_entry('debian/', '-backports') }}
 {% endif %}
-{{ write_additional_entries() }}
 
-{%- else %}{# Ubuntu or ubuntu based #}
+{%- else %}{# if ansible_distribution == 'Debian' || Debian or ubuntu based #}
 
 {% set mirror = apt_sources_ubuntu.mirror|default(apt_sources_ubuntu_mirror) %}
 {% set release = apt_sources_ubuntu.release|default(ansible_distribution_release) %}
@@ -72,7 +71,12 @@
 {% if apt_sources_ubuntu.backports|default(apt_sources_ubuntu_backports) %}
 	{{- write_entry('ubuntu/', '-backports') }}
 {% endif %}
-{{ write_additional_entries() }}
 
 {%- endif %}{# if ansible_distribution == 'ubuntu' #}
+{%- else %}{# if not apt_sources_only_additional #}
+
+{% set additional_source_strings = apt_sources_additional_source_strings %}
+
 {%- endif %}{# if not apt_sources_only_additional #}
+
+{{ write_additional_entries() }}
