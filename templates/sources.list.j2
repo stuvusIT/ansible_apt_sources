@@ -44,7 +44,7 @@
 	{{- write_entry('debian/', '-backports') }}
 {% endif %}
 
-{%- else %}{# Ubuntu or ubuntu based #}
+{%- else %}{# if ansible_distribution == 'Debian' || Debian or ubuntu based #}
 
 {% set mirror = apt_sources_ubuntu.mirror|default(apt_sources_ubuntu_mirror) %}
 {% set release = apt_sources_ubuntu.release|default(ansible_distribution_release) %}
