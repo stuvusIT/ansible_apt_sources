@@ -35,7 +35,7 @@
 ## Main repositories
 {{ write_entry('debian/', '') }}
 {% if apt_sources_debian.security_repo|default(apt_sources_debian_security_repo) %}
-	{{- write_entry('debian-security/', '/updates') }}
+	{{- write_entry('debian-security/', '/updates' if release == "buster" or release == "stretch" or release == "jessie" else '-security') }}
 {% endif %}
 {% if apt_sources_debian.update_repo|default(apt_sources_debian_update_repo) %}
 	{{- write_entry('debian/', '-updates') }}
